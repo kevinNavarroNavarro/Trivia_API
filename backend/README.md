@@ -51,8 +51,10 @@ GET '/categories/<int:category_id>/questions'
 POST '/questions'
 POST '/quizzes'
 DELETE '/questions/<int:id>'
+```
 
 GET '/categories'
+```
 - Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
 - Request Arguments: None
 - Returns: An object with a single key, categories, that contains a object of id: category_string key: value pairs. 
@@ -65,11 +67,11 @@ GET '/categories'
 ```
 
 GET '/questions'
+```
 - Fetches a dictionary of questions in which the keys are the ids and some values returned is categories, questions, success and total_questions. 
 - Request Arguments: None
 - Returns: An object with a categories(id, type), questions(answer, category, difficulty, id, question), total_questions and message to success.
-{
-  "categories": {
+{"categories": {
     "1": "Science", 
     "2": "Art", 
     "3": "Geography", 
@@ -101,11 +103,11 @@ GET '/questions'
     }
   ], 
   "success": true, 
-  "total_questions": 3
-}
-```
+  "total_questions": 3}
+  ```
 
 GET '/categories/<int:category_id>/questions'
+```
 - Fetches a dictionary of questions by category_id in which the keys are the ids and some values returned is success, question, current_category and total_questions. 
 - Request Arguments: <int:category_id>
 - Returns: An object with a current_categories, questions(answer, category, difficulty, id, question), total_questions and message to success.
@@ -140,10 +142,10 @@ GET '/categories/<int:category_id>/questions'
 ```
 
 POST '/questions'
+```
 - General:
     - Creates a new question using the submitted question, answer, category and difficulty. Returns the id of the created question, success value, total questions, and question list based on current page number to update the frontend. 
 - `curl -X POST -H "Content-Type: application/json" -d '{"question":"New question", "answer":"answer", "category":1, "difficulty":1}' http://127.0.0.1:5000/questions'`
-
 {
   "questions": [
     {
@@ -174,6 +176,7 @@ POST '/questions'
 ```
 
 POST '/questions'
+```
 - General:
     - Search a question using the submitted search term. Returns success value, total questions and question list based on current page number to update the frontend. 
 {
@@ -206,6 +209,7 @@ POST '/questions'
 ```
 
 POST '/quizzes'
+```
 - General:
     - Allow return a different question to previus question using the submitted previous_questions and quiz_category. Returns success value and question list based on category number to update the frontend. 
 {
@@ -223,6 +227,7 @@ POST '/quizzes'
 ```
 
 DELETE '/questions/<int:id>'
+```
 - DELETE a question by id
 - Request Arguments: id 
 - Returns: Returns success value, id deleted question and question list to update the frontend. 
