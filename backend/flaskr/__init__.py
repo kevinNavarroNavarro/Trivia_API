@@ -22,10 +22,15 @@ def paginate_question(request, selection):
 
 def create_app(test_config=None):
     # create and configure the app
-    app = Flask(__name__)
+    app = Flask(__name__, instance_relative_config=True)
     setup_db(app)
 
     CORS(app, resources={'/': {'origins': '*'}})
+
+    # Get the value of 'localhost'
+    # environment variable
+    key = 'localhost'
+    value = os.getenv(key)
 
     # CORS Headers
     @app.after_request
@@ -84,7 +89,7 @@ def create_app(test_config=None):
           categories[categ.id] = categ.type
 
         return jsonify({
-          'success': True,
+           'success': True,
            'categories': categories,
            'questions': current_questions,
            'total_questions': len(selection)
