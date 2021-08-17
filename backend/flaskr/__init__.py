@@ -27,11 +27,6 @@ def create_app(test_config=None):
 
     CORS(app, resources={'/': {'origins': '*'}})
 
-    # Get the value of 'localhost'
-    # environment variable
-    key = 'localhost'
-    value = os.getenv(key)
-
     # CORS Headers
     @app.after_request
     def after_request(response):
